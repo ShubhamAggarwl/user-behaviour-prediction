@@ -34,14 +34,22 @@ Understanding user interactions, such as cart additions and purchases, is critic
 - Missing values were handled, and irrelevant rows were removed.
 - Categorical features were encoded, and numerical features were scaled.
 
+This image shows the distribution of event types in the dataset.
+<img src="/mnt/data/Break down of Event Types.png" alt="Break down of Event Types" width="600">
+
 ## Workflow
 
 ### Data Sampling and Feature Engineering
-- **Sampling**: SMOTE (Synthetic Minority Oversampling Technique) was used to balance the target classes.
-- **Feature Engineering**: New features such as `event_weekday`, `is_weekend`, `activity_count`, and split categories (`category`, `subcategory`) were derived.
+- **Sampling**-SMOTE (Synthetic Minority Oversampling Technique) was used to balance the target classes.
+- **Feature Engineering**-New features such as `event_weekday`, `is_weekend`, `activity_count`, and split categories (`category`, `subcategory`) were derived.
+
+The process of feature engineering added session-level features such as activity counts.
+<img src="/mnt/data/Category-wise purchase trends.png" alt="Category-wise purchase trends" width="600">
+
+This scatter plot shows anomalies in price and activity counts detected using Isolation Forest.
+<img src="/mnt/data/Anomalies in Price vs. Activity Count.png" alt="Anomalies in Price vs. Activity Count" width="600">
 
 ### Model Training and Evaluation
-We evaluated the following machine learning models:
 1. Logistic Regression
 2. Decision Tree
 3. Random Forest
@@ -56,6 +64,9 @@ We evaluated the following machine learning models:
 - **F1-Score**-Harmonic mean of precision and recall.
 - **ROC-AUC**-Model's ability to distinguish between classes.
 - **MCC (Matthews Correlation Coefficient)**-Evaluates predictions for imbalanced datasets.
+
+The performance of models across key metrics is shown below.
+<img src="/mnt/data/Model Performance Metrics across Models.png" alt="Model Performance Metrics across Models" width="600">
 
 ## Results
 
@@ -72,43 +83,35 @@ We evaluated the following machine learning models:
 
 ### Key Insights
 - **Random Forest** achieved the highest accuracy at **49.93%** with a recall of **50.38%**, making it the top-performing model.  
-- `Price`, `Brand`, and `Activity Count` emerged as the most important features, contributing **35%**, **25%**, and **20%**, respectively, to predictions.  
-- Overall F1-scores across all models were approximately **0.50**, reflecting challenges with dataset complexity and class imbalance.  
+- Calibration curves showed that predicted probabilities deviated significantly from observed outcomes, with Random Forest achieving an average Brier score of **0.36**.  
+- Confusion matrices indicated that models struggled to classify purchases (minority class), with detection rates hovering around **50%**.  
 
-## Visualizations
+ROC curves comparing models are shown below.
+<img src="/mnt/data/ROC Curves for all models.png" alt="ROC Curves for all models" width="600">
 
-### Feature Importance
-The following features were most important across models:
-1. Price
-2. Activity Count
-3. Brand
-
-### Performance Metrics
-Bar plots and spider plots were used to compare the models' performance on key metrics.
-
-### Confusion Matrices
-The confusion matrices showed that models struggled to detect purchases (minority class).
-
-### Calibration Curves
-The calibration curves indicated the models' reliability in predicting probabilities.
+Feature importance for Random Forest and XGBoost is depicted below.
+<img src="/mnt/data/XGB Feature Importance.png" alt="XGB Feature Importance" width="600">
+<img src="/mnt/data/LR Feature Importance.png" alt="LR Feature Importance" width="600">
 
 ## Conclusion
-While models achieved moderate accuracy, additional feature engineering, hyperparameter tuning, and ensemble methods could improve results. This project highlights the challenges of predicting user interactions in e-commerce, emphasizing the importance of balanced datasets and robust evaluation.
+
+- **Random Forest** emerged as the top model with **49.93%** accuracy and a recall of **50.38%**, demonstrating moderate capability in predicting purchases.  
+- Feature importance analysis showed that `Price`, `Brand`, and `Activity Count` collectively contributed **80%** to purchase predictions.  
+- Additional techniques such as ensemble methods and hyperparameter tuning could further improve model performance.  
 
 ## How to Run the Project
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/username/user-behaviour-prediction
+    git clone https://github.com/ShubhamAggarwl/user-behaviour-prediction
     cd ecommerce-prediction
     ```
-2. **Install Required Libraries:**:
+2. **Install Required Libraries**:
     ```bash
-    pip install numpy pandas matplotlib seaborn scikit-learn imbalanced-learn xgboost lightgbm catboost tensorflow shap tqdm
+    pip install numpy pandas matplotlib seaborn scikit-learn imbalanced-learn xgboost lightgbm catboost tensorflow tqdm
     ```
 
-3. **Run the Notebook:**:
-- Open the Jupyter Notebook `Predicting-User-Behaviour.ipynb` and execute the cells to reproduce the analysis.
+3. **Run the Notebook**:
+- Open the Jupyter Notebook `predicting-user-behaviour.ipynb` and execute the cells to reproduce the analysis.
 
 4. **Review Results**:
 - Examine the metrics, visualizations, and insights to understand the model performance and dataset characteristics.
-
