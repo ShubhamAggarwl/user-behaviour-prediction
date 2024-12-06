@@ -35,7 +35,7 @@ Understanding user interactions, such as cart additions and purchases, is critic
 - Categorical features were encoded, and numerical features were scaled.
 
 This image shows the distribution of event types in the dataset.
-<img src="/assets/images/Break down of Event Types.png" alt="Break down of Event Types" width="600">
+<img src="/assets/images/event-types-breakdown.png" alt="Break down of Event Types" width="600">
 
 ## Workflow
 
@@ -44,10 +44,10 @@ This image shows the distribution of event types in the dataset.
 - **Feature Engineering**-New features such as `event_weekday`, `is_weekend`, `activity_count`, and split categories (`category`, `subcategory`) were derived.
 
 The process of feature engineering added session-level features such as activity counts.
-<img src="/assets/images/Category-wise purchase trends.png" alt="Category-wise purchase trends" width="600">
+<img src="/assets/images/category-purchase-trends.png" alt="Category-wise purchase trends" width="600">
 
 This scatter plot shows anomalies in price and activity counts detected using Isolation Forest.
-<img src="/assets/images/Anomalies in Price vs. Activity Count.png" alt="Anomalies in Price vs. Activity Count" width="600">
+<img src="/assets/images/anomalies-price-activity.png" alt="Anomalies in Price vs. Activity Count" width="600">
 
 ### Model Training and Evaluation
 1. Logistic Regression
@@ -66,7 +66,7 @@ This scatter plot shows anomalies in price and activity counts detected using Is
 - **MCC (Matthews Correlation Coefficient)**-Evaluates predictions for imbalanced datasets.
 
 The performance of models across key metrics is shown below.
-<img src="/assets/images/Model Performance Metrics across Models.png" alt="Model Performance Metrics across Models" width="600">
+<img src="/assets/images/model-performance-metrics.png" alt="Model Performance Metrics across Models" width="600">
 
 ## Results
 
@@ -83,7 +83,7 @@ The performance of models across key metrics is shown below.
 
 
 Accuracy comparison of different machine learning models in detecting fraudulent transactions.
-<img src="/assets/images/Accuracy of Models.png" alt="Accuracy of Models" width="600">
+<img src="/assets/images/models-accuracy.png" alt="Accuracy of Models" width="600">
 
 ### Key Insights
 - **Random Forest** achieved the highest accuracy at **49.93%** with a recall of **50.38%**, making it the top-performing model.  
@@ -92,12 +92,12 @@ Accuracy comparison of different machine learning models in detecting fraudulent
 
 ROC curves comparing models are shown below.
 <div align="left">
-    <img src="/assets/images/ROC Curves for all models.png" alt="ROC Curves for all models" width="600">
+    <img src="/assets/images/roc-curves.png" alt="ROC Curves for all models" width="600">
 </div>
 
 Feature importance for Logistic Regression and XGBoost is depicted below.
-<img src="/assets/images/XGB Feature Importance.png" alt="XGB Feature Importance" width="600">
-<img src="/assets/images/LR Feature Importance.png" alt="LR Feature Importance" width="600">
+<img src="/assets/images/xgb-feat-importance.png" alt="XGB Feature Importance" width="600">
+<img src="/assets/images/lr-feat-importance.png" alt="LR Feature Importance" width="600">
 
 ## Conclusion
 
